@@ -1,0 +1,751 @@
+/*
+-----------------------------------------------------------------------------------------------
+Name:		styles.css
+Author:		Tiffany Broz
+Date:		2023-10-14
+Language:	CSS
+Purpose:	This will be the styles file for my website, "Show Me That Cat!". 
+
+-----------------------------------------------------------------------------------------------
+ChangeLog:
+Who			When			What
+----------- --------------- -------------------------------------------------------------------
+TJB			2023-10-14		I was currently working on getting a responsive card layout for
+                            the card divs that I am intending on using. Currently for my body
+                            I have the main section which will host all the card divs that have
+                            the cat images along with the cat names, and the filter_section div
+                            is my section on the right with the "add a cat" button and filtering
+                            abilities. 
+
+TJB         2023-10-20      Worked on styling the cat_info_list.php file and add_cat.php file
+
+TJB         2023-10-21      Adding style for both database_error.php and error.php. Added styling  
+                            for success message if you added a cat
+
+TJB         2023-10-26      Added styling to cat_details.php and add_cat.php
+
+TJB         2023-10-27      Updated styling changes to cat_details.php and add_cat.php
+
+TJB         2023-10-28      Added styling for back arrow that returns to index.php from numerous
+                            pages 
+
+TJB         2023-11-03      Added styling for update button and delete button on cat_details.php 
+                            and then worked on the stying for the delete_cat.php
+
+TJB         2023-11-09      Added styling for update_cat.php and changed success/error message
+                            style on cat_info_list.php that better suits the rest of the 
+                            aesthetic. 
+
+TJB         2023-11-15      Added styling for filtered_cat form on cat_info_list.php to allow  
+                            user the ability to view filtered cat selection.         
+                            
+TJB         2023-11-15      Added style to top back button on cat_details.php so it floats to the
+                            left of the page compared to the edit and delete buttons
+
+TJB         2023-11-24      Edited style for error_message on filtered_cat_info_list.php and 
+                            added style to button under cat_details.php
+
+TJB         2023-12-07      Added styling for when user hovers over the h1 inside header.php
+
+-----------------------------------------------------------------------------------------------
+*/
+
+body {
+    margin: 0;
+    padding: 0;
+    font-family: Arial, sans-serif;
+    background-color: #2a9d8f;
+    display: flex;
+    flex-direction: column;
+    min-height: 100vh;
+    width: 100%;
+}
+
+    /* style for header.php */
+header {
+    background-color: #264653;
+    text-align: left;
+    z-index: 1;
+    width: 100%;
+    padding-top: 10px;
+    padding-bottom: 10px;
+}
+
+
+    /* style for footer */
+footer {
+    text-align: center;
+    font-weight: bold;
+    background-color: #264653;
+    color: #e9c46a;
+    position: fixed;
+    bottom: 0;
+    width: 100%; /* Set the width to 100% to span the entire width */
+}    
+
+
+    /* style for the h1 in header.php */
+.header_h1 {
+    font-size: 55px;
+    color: #e9c46a;
+    text-shadow: 2px 2px 2px #1f1e1e;
+    padding-left: 10px;
+    text-decoration: none;
+    transition: text-decoration 0.3s ease; /* Add transition to the text-decoration property */
+
+}
+
+
+    /* style for generic h1 without any classes */
+h1 {
+    font-size: 24px;
+    margin: 0;
+}
+
+    /* style for the container that holds both main and aside sections on cat_info_list.php */
+.container {
+    display: grid;
+    grid-template-columns: 80% 20%;
+    background-color: #ccc;
+    flex-grow: 1; 
+    position: relative;
+}
+
+    /* style for container that is wrapped around main in cat_info_list.php */
+.main_container {
+    margin-bottom: 50px;
+}
+
+    /* adds bottom margin to a div container around all cat cards in cat_info_list.php*/
+.card_container {
+    margin-bottom: 50px;
+}
+
+    /* style for div cards created after user submits cat form  */
+.cat_cards {
+    display: grid;
+    grid-template-columns: repeat(auto-fill, minmax(200px, 1fr));
+    gap: 1%;
+    padding: 1%;
+}
+
+    /* style for $cat_name in cat_info_list.php */
+.card h3.cat_name {
+    margin: 0;
+    color: #333;
+    font-size: 25px;
+}
+
+    /* removes underline from $cat_name in cat_info_list.php  */
+a:link {
+    text-decoration: none;
+}
+
+    /* style for individual card div in cat_info_list.php */
+.card {
+    background-color: #fff;
+    border: 2px solid #264653;
+    margin: 1%;
+    padding: 1%;
+    text-align: center;
+    display: flex;
+    flex-direction: column;
+}
+
+
+    /* style for aside section in cat_info_list.php for sorting/filtering */
+.filter_section {
+    padding: 1%;
+    background-color: #2a9d8f;
+    text-align: center;
+}
+
+    /* style for button that leads to add_cat.php for form to cat_info table */
+.add_cat_button {
+    display: inline-block;
+    outline: none;
+    cursor: pointer;
+    font-size: 14px;
+    line-height: 1;
+    border-radius: 500px;
+    transition-property: background-color, border-color, color, box-shadow, filter;
+    transition-duration: 0.3s;
+    border: 2px solid #333;
+    letter-spacing: 2px;
+    width: 80%;
+    text-transform: uppercase;
+    white-space: normal;
+    font-weight: 700;
+    text-align: center;
+    color: #ccc;
+    background-color: #264653;
+    height: 50px;
+    margin-top: 10px;
+}
+
+    /* style for hovering over add_cat.php button */
+.add_cat_button:hover {
+    transform: scale(1.04);
+    background-color: #ccc;
+    border: 2px solid #264653;
+    color: #264653;
+
+}
+
+
+    /* style for h1 text in aside section */
+.sorting_h1 {
+    margin-top: 70px;
+}
+
+    /* Styles the error message when wrong action happened on cat_info_list.php and filtered_cat_info_list.php */
+    /* 11/24/2023 edited width of style to fit into the website and not go past boundaries */
+.error_style {
+    text-align: center;
+    background-color: #ccc;
+    width: 70%;
+    margin-left: auto;
+    margin-right: auto;
+    margin-top: 50px;
+    padding: 10px;
+    border-radius: 10px;
+    border-style: outset;
+    border-width: 2px;
+    box-shadow: 2px 2px 2px #000000b9;
+    font-size: 28px;
+    color: #6b0202;
+    -webkit-text-stroke: 1px rgb(0, 0, 0);
+}
+    
+    /* Styles the error message when wrong action happened on actor_list.php and filtered_cat_info_list.php */
+.success_style {
+    text-align: center;
+    background-color: #ccc;
+    width: 70%;
+    margin-left: auto;
+    margin-right: auto;
+    margin-top: 20px;
+    padding: 10px;
+    border-radius: 10px;
+    border-style: outset;
+    border-width: 2px;
+    box-shadow: 2px 2px 2px #000000b9;
+    font-size: 28px;
+    color: #16d436;
+    -webkit-text-stroke: 1px rgb(0, 0, 0);
+}
+
+
+    /* Style for the form container in add_cat.php */
+    /* 10/26/2023 changed font size, width, and added min-width */
+.form_container {
+    background-color: #fff;
+    border: 2px solid #264653;
+    padding: 1%;
+    text-align: center;
+    width: 80%;
+    min-width: 400px;
+    margin-left: auto;
+    margin-right: auto;
+    margin-top: 20px;
+    margin-bottom: 20px;
+    border-radius: 5px;
+}
+
+    /* Style for the form title in add_cat.php */
+.form_h1 {
+    font-size: 50px;
+    margin-top: 10px;
+    margin-bottom: 30px;
+    color: #264653;
+}
+
+    /* Style for form labels in add_cat.php */
+.form_group label {
+    display: block;
+    font-size: 20px;
+    text-align: left;
+    font-weight: bold;
+    margin-bottom: 5px;
+    margin-top: 10px;
+    color: #333;
+}
+
+    /* Style for form inputs in add_cat.php */
+.form_group input, .form_group select {
+    width: 90%;
+    padding: 10px;
+    font-size: 20px;
+    border: 2px solid #264653;
+    border-radius: 50px;
+    margin-bottom: 20px;
+    outline: none;
+}
+
+    /* Style for the submit button in add_cat.php */
+.form_group input[type="submit"] {
+    background-color: #264653;
+    color: #fff;
+    font-weight: bold;
+    cursor: pointer;
+    transition: background-color 0.3s;
+}
+
+    /* style the hover for the form button in add_cat.php */
+.form_group input[type="submit"]:hover {
+    transform: scale(1.04);
+    background-color: #fff;
+    border: 2px solid #2a9d8f;
+    color: #333;
+}
+
+    /* Center the form button in add_cat.php */
+.form_group input[type="submit"] {
+    display: block;
+    margin: 0 auto;
+}
+
+    /* 10/26/2023 added style for the h2 traits inside add_cat.php */
+.form_h2 {
+    text-align: left;
+    font-size: 35px;
+}
+
+    /* 10/26/2023 added style for outer div of checkboxes inside add_cat.php */
+.form_trait_value {
+    display: block;
+    padding-left: 20px;
+    text-indent: -20px;
+    margin-bottom: 10px;
+    flex-basis: calc(50% - 10px); 
+}
+
+    /* 10/26/2023 added style for checkboxes inside add_cat.php */
+.form_trait_value input {
+    width: 20px;
+    height: 20px;
+    padding: 0;
+    margin: 0;
+    vertical-align: bottom;
+    position: relative;
+    top: -1px;
+}
+
+    /* 10/26/2023 added style for checkboxes to display in flex inside add_cat.php */
+.form_traits_container {
+    display: flex;
+    flex-wrap: wrap;
+    justify-content: space-between;
+    width: 100%; 
+}
+
+    /* 10/26/2023 added style div wrapped around the traits inside add_cat.php */
+.form_traits_section {
+    display: flex;
+    justify-content: space-between;
+    margin-bottom: 10px;
+}
+
+    /* 10/26/2023 added style for traits columns to be able to sit next to each other inside add_cat.php */
+.form_traits_column {
+    flex-basis: 50%; 
+}
+
+    /* Style for the error container for both error php files */
+.error_container {
+    background-color: #fff;
+    border: 2px solid #264653;
+    padding: 2%;
+    text-align: center;
+    width: 80%;
+    margin: 0 auto;
+    margin-top: 20px;
+    border-radius: 20px;
+}
+
+    /* Style for the error h1 within the container for both error php files */
+.error_container h1 {
+    font-size: 100px;
+    margin: 10px 0;
+    font-weight: bold;
+    color: #6b0202;
+}
+
+    /* Style for the error message text within the container for both error php files */
+.error_container p {
+    font-size: 25px;
+    color: #333;
+}
+
+    /* 10/26/2023 added style for h1 in cat_details.php */
+.details_h1 {
+    text-align: center;
+    font-size: 70px;
+    margin-bottom: 30px;
+}
+
+    /* 10/26/2023 added style for table in cat_details.php */
+.details_table {
+    margin: 0 auto;
+    width: 60%;
+    padding: 30px;
+}
+
+    /* 10/26/2023 added style for the left column for table in cat_details.php */
+.details_label {
+    text-align: left; 
+    font-size: 40px;
+    color: #000000;
+    font-weight: bold;
+}
+
+    /* 10/26/2023 added padding for td cells for table in cat_details.php */
+td {
+    padding-bottom: 15px;
+}
+
+    /* 10/26/2023 added style for the right column for table in cat_details.php */
+.details_cat {
+    text-align: right; 
+    font-size: 30px;
+}
+
+    /* 10/27/2023 added style for main div in cat_details.php */
+.details_main {
+    margin-bottom: 50px;
+}
+
+
+    /* 10/27/2023 Style for the cat details container on cat_details.php */
+.cat_details {
+    text-align: center;
+    background-color: #ccc;
+    width: 50%;
+    min-width: 400px;
+    margin-left: auto;
+    margin-right: auto;
+    margin-top: 50px;
+    padding: 10px;
+    display: flex;
+    flex-direction: column;
+    border-radius: 10px;
+    border-style: outset;
+    border-width: 5px;
+    box-shadow: 5px 5px 5px #000000b9;
+}
+
+    /*  10/27/2023 Style for the Personality and Physical traits container on cat_details.php */
+.details_traits_container {
+    display: flex;
+    justify-content: space-between;
+    margin-top: 20px;
+    margin-bottom: 20px;
+    width: 100%; 
+}
+
+    /* 10/27/2023 Style for the h2 that says "traits" on cat_details.php */
+.details_traits_header {
+    font-size: 50px;
+    margin-bottom: 10px;
+}
+
+    /* 10/27/2023 Style for the Personality and Physical traits lists on cat_details.php */
+.details_h2 {
+    text-align: center;
+    font-size: 30px;
+
+}
+
+    /* 10/27/2023 Style for the Personality and Physical traits divs on cat_details.php  */
+.details_personality,
+.details_physical {
+    flex-basis: 50%; 
+    text-align: left;
+    padding-left: 10px;
+    font-size: 30px;
+}
+
+    /* 10/27/2023 Style for the Personality and Physical traits lists on cat_details.php */
+.details_personality ul.traits_list,
+.details_physical ul.traits_list {
+    list-style: none;
+    padding: 0; 
+    margin: 0; 
+}
+
+    /* 10/27/2023 Style for the horizontal rule separating the sections on cat_details.php */
+hr {
+    border: 2px solid #333;
+    border-radius: 5px;
+    width: 90%;   
+}
+
+    /* 10/27/2023 Style for the horizontal rule under traits categories on cat_details.php */
+.traits_hr {
+    border: 1px solid #333;
+    border-radius: 5px;
+    width: 90%;   
+}
+
+    /* 10/28/2023 style for back.png */
+.back_button_image {
+    width: 80px;
+    margin-top: 10px;
+    padding-left: 50px;
+}
+
+
+    /* 11/3/2023 Style for div that holds image buttons on cat_details.php */
+.cat_buttons {
+    text-align: right;
+    margin-right: 10px;
+    margin-top: 5px;
+}
+
+    /* 11/24/2023 Style for div for top back button on cat_details.php */
+.back_button_nav {
+    float: left;
+}
+
+    /* 11/3/2023 Style for update.png on cat_details.php */
+.update_button_image {
+    width: 75px;
+}
+
+    /* 11/3/2023 Style for delete.png on cat_details.php */
+.delete_button_image {
+    width: 75px;
+}
+
+/* 10/28/2023 Wiggle animation */
+@keyframes wiggle {
+    0% { transform: rotate(0deg); }
+    20% { transform: rotate(-2deg); }
+    40% { transform: rotate(2deg); }
+    60% { transform: rotate(-2deg); }
+    80% { transform: rotate(2deg); }
+    100% { transform: rotate(0deg); }
+}
+
+/* 10/28/2023 Style for hovering over back button image */
+.back_button_image:hover {
+    animation: wiggle 1s ease-in-out infinite;
+}
+
+/* 11/02/2023 Style for hovering over update button image */
+.update_button_image:hover {
+    animation: wiggle 1s ease-in-out infinite;
+}
+
+/* 11/02/2023 Style for hovering over delete button image */
+.delete_button_image:hover {
+    animation: wiggle 1s ease-in-out infinite;
+}
+
+/* 11/03/2023 Style for hovering over back button image on delete_cat.php */
+#delete_back_button_image:hover {
+    animation: wiggle 1s ease-in-out infinite;
+}
+
+/* 11/09/2023 Style for hovering over back button image on update_cat.php */
+#update_back_button_image:hover {
+    animation: wiggle 1s ease-in-out infinite;
+}
+
+    /* 11/3/2023 Style for the success/error div on delete_cat.php */
+.delete_message_container {
+    text-align: center;
+    background-color: #ccc;
+    width: 50%;
+    min-width: 400px;
+    margin-left: auto;
+    margin-right: auto;
+    margin-top: 50px;
+    padding: 10px;
+    border-radius: 10px;
+    border-style: outset;
+    border-width: 5px;
+    box-shadow: 5px 5px 5px #000000b9;
+}
+
+    /* 11/3/2023 Style for delete div on delete_cat.php */
+.delete_container {
+    text-align: center;
+    background-color: #ccc;
+    width: 50%;
+    font-size: 20px;
+    min-width: 400px;
+    margin-left: auto;
+    margin-right: auto;
+    margin-top: 50px;
+    padding: 10px;
+    border-radius: 10px;
+    border-style: outset;
+    border-width: 5px;
+    box-shadow: 5px 5px 5px #000000b9;
+}
+
+
+    /* 11/03/2023 style for back.png on delete_cat.php*/
+    /* 11/09/2023 changed class to ID */
+#delete_back_button_image {
+    width: 200px;
+    margin-top: 10px;
+}
+
+   /* 11/03/2023 style for success message delete_cat.php */ 
+.delete_success {
+    font-size: 50px;
+    color: #16d436;
+    -webkit-text-stroke: 2px rgb(0, 0, 0);
+}
+
+    /* 11/03/2023 style for failed message delete_cat.php */
+.delete_fail {
+    font-size: 50px;
+    color: #a80101;
+    -webkit-text-stroke: 2px rgb(0, 0, 0);
+}
+
+
+   /* 11/03/2023 style for success message update_cat.php */ 
+.update_success {
+    font-size: 50px;
+    color: #16d436;
+    -webkit-text-stroke: 2px rgb(0, 0, 0);
+}
+
+    /* 11/03/2023 style for failed message update_cat.php */
+.update_fail {
+    font-size: 50px;
+    color: #a80101;
+    -webkit-text-stroke: 2px rgb(0, 0, 0);
+}
+
+
+
+    /* 11/03/23 style for button that deletes cat in delete_cat.php */
+.delete_submit_button {
+    display: inline-block;
+    outline: none;
+    cursor: pointer;
+    font-size: 14px;
+    line-height: 1;
+    border-radius: 500px;
+    transition-property: background-color, border-color, color, box-shadow, filter;
+    transition-duration: 0.3s;
+    border: 2px solid #333;
+    letter-spacing: 2px;
+    width: 80%;
+    text-transform: uppercase;
+    white-space: normal;
+    font-weight: 700;
+    text-align: center;
+    color: #ccc;
+    background-color: #264653;
+    height: 50px;
+    margin-top: 10px;
+    margin-bottom: 10px;
+}
+    
+    /* 11/03/2023 style for hovering over delete_cat.php button */
+.delete_submit_button:hover {
+    transform: scale(1.04);
+    background-color: #ccc;
+    border: 2px solid #264653;
+    color: #264653;
+    
+}
+
+/* 11/9/2023 Style for the success/error div on update_cat.php */
+.update_message_container {
+    text-align: center;
+    background-color: #ccc;
+    width: 50%;
+    min-width: 400px;
+    margin-left: auto;
+    margin-right: auto;
+    margin-top: 50px;
+    padding: 10px;
+    border-radius: 10px;
+    border-style: outset;
+    border-width: 5px;
+    box-shadow: 5px 5px 5px #000000b9;
+}
+
+/* 11/09/2023 style for back.png on update_cat.php */
+#update_back_button_image {
+    width: 200px;
+    margin-top: 10px;
+    }
+
+/* 11/15/2023 style for filter form in cat_info_list.php */
+.filter_form_container {
+    text-align: left;
+    margin-bottom: 100px;
+}
+
+/* 11/15/2023 style for filter form in cat_info_list.php */
+.filter_form_group {
+    margin-bottom: 15px;
+}
+
+/* 11/15/2023 style for filter form in cat_info_list.php */
+.filter_label {
+    display: block;
+    font-size: 20px;
+    text-align: left;
+    font-weight: bold;
+    margin-bottom: 5px;
+    margin-top: 10px;
+    color: #333;
+}
+
+/* 11/15/2023 style for filter form in cat_info_list.php */
+.filter_form_group input, .filter_form_group select {
+    width: 80%;
+    padding: 10px;
+    margin-left: 10px;
+    font-size: 20px;
+    border: 2px solid #264653;
+    border-radius: 50px;
+    margin-bottom: 20px;
+    outline: none;
+}
+
+/* 11/15/2023 style for filter form in cat_info_list.php */
+.filter_form_group input[type="submit"] {
+    background-color: #264653;
+    color: #fff;
+    font-weight: bold;
+    cursor: pointer;
+    transition: background-color 0.3s;
+}
+    
+/* 11/15/2023 style for filter form in cat_info_list.php */
+.filter_form_group input[type="submit"]:hover {
+    transform: scale(1.04);
+    background-color: #fff;
+    border: 2px solid #2a9d8f;
+    color: #333;
+}
+
+/* 11/15/2023 style for filter form in cat_info_list.php */
+.filter_form_h1 {
+    margin-top: 50px;
+    font-size: 45px;
+    color: #e9c46a;
+    text-shadow: 2px 2px 2px #1f1e1e;
+    padding-left: 10px;
+}
+
+/* 12/07/23 Remove default link styles */
+.header_h1 a {
+    color: inherit; /* Inherit text color from the parent */
+    text-decoration: none; /* Remove underline */
+}
+
+/* 12/07/23 On hover */
+.header_h1 a:hover {
+    text-decoration: underline;
+}
